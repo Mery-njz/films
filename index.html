@@ -1,135 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> ּ֯ . ❥ ּ֯ ┆꒰ 𝚖𝚎𝚛𝚢 𝚜𝚒𝚝𝚎 .ᐟ ꒱</title>
- 
-  <style>
-    body {
-      margin: 0;
-      background: #f7c9d8; /* rosa mais escuro */
-      background: #f7c9d8 url('mvbb.jpg') center/cover no-repeat fixed;
-      font-family: 'Courier New', monospace;
-      color: #444;
-      overflow-x: hidden; /* remove barra horizontal */
-    }
-
-    .container {
-      display: flex;
-      justify-content: flex-end; /* joga o conteúdo pro lado direito */
-      max-width: 1200px;
-      margin: 20px auto;
-    }
-
-    .left-column {
-      width: 200px;
-      padding: 10px;
-    }
-    .left-column img {
-      width: 100%;
-      margin-top: 10px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-    .menu {
-      margin-bottom: 20px;
-      font-size: 14px;
-    }
-    .menu a {
-      text-decoration: none;
-      color: #8b3a62;
-      font-weight: bold;
-    }
-
-    .center-column {
-      flex: 1;
-      background: transparent;
-      padding: 20px;
-      margin-left: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 8px rgba(200,150,200,0.2);
-    }
-    .center-column h1 {
-      color: #8b3a62;
-      margin-bottom: 20px;
-    }
-    .center-column img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-    .scroll-box {
-      line-height: 1.6;
-      font-size: 16px;
-    }
-
-    .right-column {
-      width: 220px;
-      margin-left: 20px;
-    }
-    .right-column img {
-      width: 100%;
-      margin-bottom: 10px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-    .speech-bubble {
-      background: #fbe3ec;
-      border-radius: 12px;
-      padding: 10px;
-      margin-bottom: 10px;
-      font-style: italic;
-      color: #8b3a62;
-    }
-    .calendar {
-      margin-top: 15px;
-    }
-    .calendar table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: center;
-    }
-    .calendar th, .calendar td {
-      border: 1px solid #ccc;
-      padding: 5px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo</title>
+    <link rel="stylesheet" href="../estilo.css">
 </head>
 <body>
 
-    <div class="center-column">
-      <h1>Mery ⭑⊹ ࣪ ˖ᐟ</h1>
-      <a href="https://www.youtube.com/watch?v=Kbip8GQ6XQw&list=LL&index=1&t=2443s">
-        <img src="img-centerr.png" alt="Imagem central" />
-      </a>
-      <div class="scroll-box">
-        hello welcome to <b>mery</b><br>
-        this website is a collection of everything i love.<br>
-      </div>
-    </div>
-    
-    <div class="right-column">
-      <a href="pag4.html">
-        <img src="imagem-blog.jpg" alt="Blog" />
-      </a>
-      <div class="speech-bubble">Blog is my life . .</div>
-      <img src="imagem-about.jpg" alt="About" />
-      <img src="imagem-avatar.jpg" alt="Avatar" />
-      <div class="calendar">
-        <table>
-          <thead>
-            <tr><th>Su</th><th>M</th><th>T</th><th>W</th><th>Th</th><th>F</th><th>Sa</th></tr>
-          </thead>
-          <tbody>
-            <tr><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
-            <tr><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <!-- Banner Topo Full Width -->
+    <section class="banner-carousel">
+        <div class="banner-slides">
+            <img src="Banner Catalogo.jpg" class="slide active" alt="Banner 1">
+            <img src="banner 2C.jpg" class="slide" alt="Banner 2">
+            <img src="banner 3C.jpg" class="slide" alt="Banner 3">
+        </div>
+        <div class="banner-indicators">
+            <span class="indicator active"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+        </div>
+    </section>
+
+    <!-- Conteúdo principal abaixo do banner -->
+    <div class="site-container">
+        <header class="header">
+            <h1 class="titulo">Meu Catálogo</h1>
+            <a href="formulario2.html" class="btn-voltar">← Cadastrar Novo</a>
+        </header>
+
+        <main>
+            <div id="colecao"></div>
+        </main>
     </div>
 
-  </div> 
-
+    <script src="teste.js"></script>
 </body>
 </html>
