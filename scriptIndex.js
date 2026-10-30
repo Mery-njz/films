@@ -1,8 +1,9 @@
-const container = document.querySelector('.todosCards');
+const container = document.querySelector('.todosCards') || document.getElementById('colecao');
 
 fetch('/api/lista')
     .then(resposta => resposta.json())
     .then(dados => {
+        if (!container) return;
         container.innerHTML = ''; // Limpa o container antes de renderizar
 
         dados.forEach(obra => {
