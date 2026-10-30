@@ -115,7 +115,41 @@ app.post('/api/avaliacoes', (req, res) => {
             },
             body: JSON.stringify(novoFilme)
         });
+document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".banner-slides .slide");
+    const indicators = document.querySelectorAll(".banner-indicators .indicator");
+    let currentIndex = 0;
+    const intervalTime = 4000; // Tempo em milissegundos (4 segundos)
 
+    function showSlide(index) {
+        // Remove a classe active de todos
+        slides.forEach(slide => slide.classList.remove("active"));
+        indicators.forEach(indicator => indicator.classList.remove("active"));
+
+        // Adiciona a classe active no índice atual
+        slides[index].classList.add("active");
+        indicators[index].classList.add("active");
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+    }
+
+    // Inicia o carrossel automático
+    let slideInterval = setInterval(nextSlide, intervalTime);
+
+    // Permite clicar nos indicadores para mudar o banner manualmente
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener("click", () => {
+            currentIndex = index;
+            showSlide(currentIndex);
+            // Reinicia o temporizador ao clicar manualmente
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, intervalTime);
+        });
+    });
+});
 // Iniciar o servidor
 app.listen(3000, () => {
     console.log("🚀 Servidor CRUD rodando em http://localhost:3000");
