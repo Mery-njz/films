@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. RESET & CONFIGURAÇÕES GERAIS
+   1. RESET & CONFIGURAÇÕES GERAIS (Dark Theme)
    ========================================================================== */
 * {
     margin: 0;
@@ -9,8 +9,8 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f8f9fa;
-    color: #212529;
+    background-color: #0d0d0d; /* Fundo preto elegante */
+    color: #e0e0e0;            /* Texto cinza claro para leitura confortável */
     line-height: 1.5;
 }
 
@@ -21,14 +21,15 @@ body {
 }
 
 /* ==========================================================================
-   2. BANNER CAROUSEL (Simples e Ajustado)
+   2. BANNER CAROUSEL (Estilo Cinema)
    ========================================================================== */
 .banner-carousel {
     position: relative;
     width: 100%;
     height: 380px;
-    background-color: #e9ecef;
+    background-color: #161616;
     overflow: hidden;
+    border-bottom: 3px solid #e50914; /* Detalhe vermelho estilo streaming */
 }
 
 .banner-slides {
@@ -45,6 +46,7 @@ body {
     object-fit: cover;
     opacity: 0;
     transition: opacity 0.6s ease-in-out;
+    filter: brightness(0.8); /* Deixa a imagem um pouco mais escura para combinar */
 }
 
 .banner-slides img.active {
@@ -66,13 +68,13 @@ body {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, width 0.3s;
 }
 
 .indicator.active {
-    background-color: #ffffff;
+    background-color: #e50914; /* Vermelho vibrante no indicador ativo */
     width: 24px;
     border-radius: 10px;
 }
@@ -85,33 +87,36 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 40px 0;
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid #222222;
     margin-bottom: 40px;
 }
 
 .titulo {
     font-size: 2.2rem;
     font-weight: 700;
-    color: #1a1a1a;
+    color: #ffffff;
     letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-/* Botão Cadastrar */
+/* Botão Cadastrar / Ações */
 .btn-voltar {
     display: inline-flex;
     align-items: center;
     padding: 10px 20px;
-    background-color: #1a1a1a;
+    background-color: #e50914; /* Vermelho destaque */
     color: #ffffff;
     text-decoration: none;
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 600;
     border-radius: 6px;
-    transition: background-color 0.2s, transform 0.1s;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(229, 9, 20, 0.3);
 }
 
 .btn-voltar:hover {
-    background-color: #333333;
+    background-color: #f40612;
+    box-shadow: 0 6px 15px rgba(229, 9, 20, 0.5);
 }
 
 .btn-voltar:active {
@@ -119,7 +124,7 @@ body {
 }
 
 /* ==========================================================================
-   4. GRID DE FILMES & CARDS (Modificado para usar #colecao)
+   4. GRID DE FILMES & CARDS (Estilo Dark Cards)
    ========================================================================== */
 #colecao {
     display: grid;
@@ -129,25 +134,27 @@ body {
 }
 
 .card {
-    background-color: #ffffff;
+    background-color: #141414; /* Cartão em tom de preto fosco */
+    border: 1px solid #222222;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     display: flex;
-    flex-direction: column-reverse; /* Inverte para a imagem ficar no topo se mantiver a estrutura HTML anterior */
+    flex-direction: column-reverse; 
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transform: translateY(-6px);
+    box-shadow: 0 14px 25px rgba(0, 0, 0, 0.6);
+    border-color: #444444;
 }
 
 /* Container da Imagem */
 .card .img {
     width: 100%;
     height: 380px;
-    background-color: #f1f3f5;
+    background-color: #1f1f1f;
     overflow: hidden;
 }
 
@@ -155,6 +162,11 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.card:hover .img img {
+    transform: scale(1.05); /* Leve zoom na imagem ao passar o mouse */
 }
 
 /* Bloco de Texto */
@@ -169,13 +181,13 @@ body {
 .card .texto h3 {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #1a1a1a;
+    color: #ffffff;
     line-height: 1.3;
 }
 
 .card .texto p {
     font-size: 0.95rem;
-    color: #6c757d;
+    color: #a0a0a0; /* Texto secundário em cinza suave */
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -188,14 +200,14 @@ body {
     .banner-carousel {
         height: 250px;
     }
-    
+     
     .header {
         flex-direction: column;
         gap: 20px;
         align-items: flex-start;
         padding: 30px 0;
     }
-    
+     
     .titulo {
         font-size: 1.8rem;
     }
