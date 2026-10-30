@@ -64,3 +64,14 @@ from.addEventListener('sumbit', function(e) {
         window.location.href = 'index.html';
     });
 });
+
+card.innerHTML = `
+    <div class="texto">
+        <h3>${obra.titulo} (${obra.ano_lancamento})</h3>
+        <p>${obra.sinopse}</p>
+        <small style="color: #60a5fa;">Diretor ID: ${obra.id_diretor}</small>
+    </div>
+    <div class="img">
+        <img src="header1.jpg" alt="Capa do Filme">
+    </div>
+`;
