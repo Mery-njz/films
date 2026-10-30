@@ -2,34 +2,30 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Formulário .ᐟ</title>
-   <link href="form.css" rel="stylesheet" />
-    <script src="script.js" defer></script>
+    <title>Cadastro de Filme</title>
+    <link href="form.css" rel="stylesheet" />
+    <script src="scriptform.js" defer></script>
 </head>
 <body>
     <div class="formulario">
-        <h3>cadastro ♰</h3>
-        <p>adicione as informações</p>
+        <h3>Cadastro de Filme ♰</h3>
+        <p>Insira as informações do filme</p>
        
-        <!-- CORRIGIDO: ID alterado para CamelCase igual ao JS -->
         <form id="meuFormulario">
-            <label for="titulo">Nome</label>
-            <input type="text" id="titulo" placeholder="Escreva o nome..." required>
+            <label for="titulo">Título do Filme</label>
+            <input type="text" id="titulo" placeholder="Ex: Interestellar" required>
            
-            <label for="imagem">URL da foto</label>
-            <input type="url" id="imagem" placeholder="https://linkdaimagem.com" required>
+            <label for="ano_lancamento">Ano de Lançamento</label>
+            <input type="number" id="ano_lancamento" placeholder="Ex: 2014" required>
            
-            <!-- ADICIONADO: Campo descrição da imagem que faltava para o JS funcionar -->
-            <label for="descricao">Descrição da imagem (Acessibilidade)</label>
-            <input type="text" id="descricao" placeholder="O que tem na foto?" required>
+            <label for="sinopse">Sinopse</label>
+            <textarea id="sinopse" placeholder="Escreva a sinopse do filme..." required></textarea>
 
-            <label for="paragrafo">Escreva sobre ela</label>
-            <textarea id="paragrafo" placeholder="Conte mais detalhes..." required></textarea>
+            <label for="id_diretor">ID do Diretor</label>
+            <input type="number" id="id_diretor" placeholder="Ex: 1" required>
            
-            <button type="submit">adicionar ⟡˖ ࣪</button>
+            <button type="submit">Adicionar ⟡˖ ࣪</button>
         </form>
     </div>
-   
-    <div id="colecao"></div>
 </body>
 </html>
