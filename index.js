@@ -107,6 +107,14 @@ app.post('/api/avaliacoes', (req, res) => {
     res.status(201).json({ status: "sucesso", avaliacao: novaAvaliacao });
 });
 
+// Dispara a requisição POST para a nova rota do CRUD
+        const resposta = await fetch('/api/filmes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(novoFilme)
+        });
 
 // Iniciar o servidor
 app.listen(3000, () => {
