@@ -1,144 +1,115 @@
- body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #fce4ec, #e3f2fd);
-            margin: 0;
-            padding: 0;
-        }
 
-        .formulario {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            background: #ffffffcc;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            width: 350px;
-            margin: 50px auto;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        #meuFormulario {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #050505;
+    color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
 
-        .formulario h3 {
-            font-size: 24px;
-            color: #5c6bc0;
-            margin: 0 0 5px 0;
-            text-shadow: 1px 1px 2px #f8bbd0;
-            text-align: center;
-        }
 
-        .formulario p {
-            color: #6d4c41;
-            margin: 0 0 20px 0;
-            text-align: center;
-            font-size: 14px;
-        }
+.formulario {
+    width: 100%;
+    max-width: 500px;
+    background-color: #121214;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+}
 
-        label {
-            font-weight: bold;
-            color: #ad1457;
-            margin-top: 15px;
-        }
+.formulario h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
 
-        input, textarea {
-            box-sizing: border-box;
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 2px solid #bbdefb;
-            border-radius: 10px;
-            outline: none;
-            transition: 0.3s;
-            background: #fff;
-            font-family: inherit;
-        }
+.formulario p {
+    font-size: 0.95rem;
+    color: #9ca3af;
+    margin-bottom: 30px;
+}
 
-        input:focus, textarea:focus {
-            border-color: #64b5f6;
-            box-shadow: 0 0 8px #90caf9;
-        }
 
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
-        button {
-            margin-top: 20px;
-            padding: 12px 20px;
-            background: #f48fb1;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.3s;
-            width: 100%;
-        }
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #d1d5db;
+    margin-bottom: -10px; /* Aproxima o label do input correspondente */
+}
 
-        button:hover {
-            background: #ec407a;
-            transform: scale(1.02);
-        }
+input, textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #1a1a1e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
 
-        /* Galeria */
-        #colecao {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px;
-        }
+input:focus, textarea:focus {
+    border-color: #3b82f6; /* Azul neon combinando com o catálogo */
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    background-color: #1f1f24;
+}
 
-        .card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            border: 2px solid #bbdefb;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px;
-            background: #ffffff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            width: 250px;
-        }
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
 
-        .card h3 {
-            color: #5c6bc0;
-            margin: 0 0 10px 0;
-            text-align: center;
-        }
 
-        .card p {
-            color: #6d4c41;
-            text-align: center;
-            margin: 0 0 10px 0;
-        }
+button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+}
 
-        .card .img {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-top: 10px;
-            width: 100%;
-        }
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+}
 
-        .card img {
-            max-width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-            margin-bottom: 8px;
-        }
+button[type="submit"]:active {
+    transform: scale(0.98);
+}
 
-        .card .descricao {
-            font-size: 14px;
-            color: #ad1457;
-            text-align: center;
-            margin: 0;
-        }
+
+@media (max-width: 480px) {
+    .formulario {
+        padding: 24px;
+    }
+    
+    .formulario h3 {
+        font-size: 1.6rem;
+    }
+}
