@@ -1,77 +1,67 @@
-// 1. Inicializa a lista buscando dados existentes ou cria uma nova lista vazia
-const galeria = JSON.parse(localStorage.getItem('galeria')) || [];
+document.addEventListener("DOMContentLoaded", () => {
+    // --- 1. LÓGICA DO CARROSSEL ---
+    const slides = document.querySelectorAll(".banner-slides .slide");
+    const indicators = document.querySelectorAll(".banner-indicators .indicator");
+    let currentIndex = 0;
 
-const formulario = document.getElementById('meuFormulario');
+    function showSlide(index) {
+        if (slides.length === 0) return;
+        slides.forEach(slide => slide.classList.remove("active"));
+        indicators.forEach(indicator => indicator.classList.remove("active"));
 
-// 3. Função para renderizar todos os cards na tela
-function renderizarCards() {
-    const container = document.getElementById('colecao');
-    container.innerHTML = ''; // Limpa o container antes de renderizar para não duplicar
+        slides[index].classList.add("active");
+        indicators[index].classList.add("active");
+    }
 
-    galeria.forEach(flores => {
-        const novoCard = `
-            <div class="card"> 
-                <div class="letras">
-                    <h3>${flores.titulo}</h3>
-                    <p>${flores.texto}</p>
-                </div>
-                <div class="img">
-                    <img src="${flores.imagem}" alt="${flores.descricaoIm}" />
-                    <p class="descricao">${flores.descricaoIm}</p>
-                </div>
-            </div>
-        `;
-        container.innerHTML += novoCard;
-    });
-}
+    function nextSlide() {
+        if (slides.length === 0) return;
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+    }
 
-// 4. Renderiza os cards guardados logo que a página carrega
-renderizarCards();
+    if (slides.length > 0) {
+        setInterval(nextSlide, 4000); // Passa o slide a cada 4 segundos
 
-formulario.addEventListener('submit', function(evento){
-    evento.preventDefault();
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener("click", () => {
+                currentIndex = index;
+                showSlide(currentIndex);
+            });
+        });
+    }
 
-    const novo = {
-        titulo: document.getElementById('titulo').value,
-        imagem: document.getElementById('imagem').value,
-        descricaoIm: document.getElementById('descricao').value, 
-        texto: document.getElementById('paragrafo').value
-    };
+    // --- 2. BUSCAR OS FILMES DO SERVIDOR (CRUD) ---
+    const colecaoDiv = document.getElementById("colecao");
 
-    // 2. Adiciona o objeto no array e atualiza o LocalStorage
-    galeria.push(novo);
-    localStorage.setItem('galeria', JSON.stringify(galeria));
+    if (colecaoDiv) {
+        // ATENÇÃO: Tem de estar a apontar para /api/filmes (que é a rota nova do seu index.js)
+        fetch('/api/filmes')
+            .then(response => response.json())
+            .then(data => {
+                colecaoDiv.innerHTML = ""; // Limpa a coleção antes de renderizar
+                
+                if (data.length === 0) {
+                    colecaoDiv.innerHTML = "<p style='color: #9ca3af; text-align: center;'>Nenhum filme cadastrado ainda.</p>";
+                    return;
+                }
 
-    // Atualiza a tela com o novo card
-    renderizarCards();
-    
-    formulario.reset(); 
+                data.forEach(obra => {
+                    const card = document.createElement("div");
+                    card.classList.add("card");
+
+                    card.innerHTML = `
+                        <div class="texto">
+                            <h3>${obra.titulo} (${obra.ano_lancamento || ''})</h3>
+                            <p>${obra.sinopse || ''}</p>
+                            <small style="color: #60a5fa; display: block; margin-top: 10px;">Diretor ID: ${obra.id_diretor || 1}</small>
+                        </div>
+                        <div class="img">
+                            <img src="${obra.imagem}" alt="Capa do Filme" onerror="this.src='header1.jpg'">
+                        </div>
+                    `;
+                    colecaoDiv.appendChild(card);
+                });
+            })
+            .catch(error => console.error("Erro ao carregar a lista de filmes:", error));
+    }
 });
-
-from.addEventListener('sumbit', function(e) {
-    e.preventDefalut();
-
-    const novaObra = new ObraDeArte(t, desc, img, alt);
-
-    fetch('/api/lista', {
-        method: 'POST',
-        headers {
-            'Content-Type': 'application/json'
-        },
-        body: JOSON.stringify(novaObra)
-    })
-    .then(() => {
-        window.location.href = 'index.html';
-    });
-});
-
-card.innerHTML = `
-    <div class="texto">
-        <h3>${obra.titulo} (${obra.ano_lancamento})</h3>
-        <p>${obra.sinopse}</p>
-        <small style="color: #60a5fa;">Diretor ID: ${obra.id_diretor}</small>
-    </div>
-    <div class="img">
-        <img src="header1.jpg" alt="Capa do Filme">
-    </div>
-`;
