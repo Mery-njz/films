@@ -1,50 +1,40 @@
-class Filme {
-    constructor(titulo, ano_lancamento, sinopse, id_diretor) {
+// Classe ObraDeArt (ou Filme) com a ordem exata dos atributos
+class ObraDeArt {
+    constructor(titulo, descricao, imagem, descImagem) {
         this.titulo = titulo;
-        this.ano_lancamento = ano_lancamento;
-        this.sinopse = sinopse;
-        this.id_diretor = id_diretor;
+        this.descricao = descricao;
+        this.imagem = imagem;
+        this.descImagem = descImagem;
     }
 }
 
 const formulario = document.getElementById('meuFormulario');
 
-formulario.addEventListener('submit', async function(evento) {
+formulario.addEventListener('submit', function(evento) {
     evento.preventDefault(); // Impede o recarregamento padrão da página
 
-    // Captura os valores digitados nos inputs corretos do banco
-    const titulo = document.getElementById('titulo').value;
-    const ano_lancamento = document.getElementById('ano_lancamento').value;
-    const sinopse = document.getElementById('sinopse').value;
-    const id_diretor = document.getElementById('id_diretor').value;
+    // Captura os valores digitados nos inputs do form.html
+    const tituloF = document.getElementById('titulo').value;
+    const imagemF = document.getElementById('imagem').value;
+    const descricaoImF = document.getElementById('sinopse').value; // Usando a sinopse como descrição
+    const descImgF = "Capa do filme " + tituloF;
 
-    // Instancia o objeto Filme
-    const novoFilme = new Filme(titulo, ano_lancamento, sinopse, id_diretor);
+    // Instancia o objeto com a estrutura correta
+    const novaObra = new ObraDeArt(tituloF, descricaoImF, imagemF, descImgF);
 
-    try {
-        // Dispara a requisição POST para a API
-        const resposta = await fetch('/api/lista', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(novoFilme)
-        });
-
-        if (!resposta.ok) {
-            throw new Error(`Erro no servidor: ${resposta.status}`);
-        }
-
+    // Dispara a requisição POST para a API
+    fetch('/api/lista', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(novaObra)
+    })
+    .then(resposta => resposta.json())
+    .then(() => {
         alert('Filme cadastrado com sucesso!');
         formulario.reset();
-        window.location.href = 'index.html'; // Redireciona para a home
-
-    } catch (erro) {
-        console.error("Erro ao enviar:", erro);
-    }
+        window.location.href = 'index.html'; // Redireciona para ver o card na galeria
+    })
+    .catch(erro => console.error("Erro ao enviar:", erro));
 });
-
-
-alert('Filme cadastrado com sucesso!');
-formulario.reset();
-window.location.href = 'index.html'; // <-- Isto aqui já leva ele direto pro catálogo principal!
