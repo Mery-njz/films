@@ -43,3 +43,8 @@ formulario.addEventListener('submit', async function(evento) {
         console.error("Erro ao enviar:", erro);
     }
 });
+
+
+alert('Filme cadastrado com sucesso!');
+formulario.reset();
+window.location.href = 'index.html'; // <-- Isto aqui já leva ele direto pro catálogo principal!
