@@ -1,9 +1,9 @@
-class ObraDeArte {
-    constructor(titulo, descricao, imagem, descImagem) {
+class Filme {
+    constructor(titulo, ano_lancamento, sinopse, id_diretor) {
         this.titulo = titulo;
-        this.descricao = descricao;
-        this.imagem = imagem;
-        this.descImagem = descImagem;
+        this.ano_lancamento = ano_lancamento;
+        this.sinopse = sinopse;
+        this.id_diretor = id_diretor;
     }
 }
 
@@ -12,14 +12,14 @@ const formulario = document.getElementById('meuFormulario');
 formulario.addEventListener('submit', async function(evento) {
     evento.preventDefault(); // Impede o recarregamento padrão da página
 
-    // Captura os valores digitados nos inputs
-    const tituloF = document.getElementById('titulo').value;
-    const imagemF = document.getElementById('imagem').value;
-    const descricaoImF = document.getElementById('descricao').value;
-    const textoF = document.getElementById('paragrafo').value;
+    // Captura os valores digitados nos inputs corretos do banco
+    const titulo = document.getElementById('titulo').value;
+    const ano_lancamento = document.getElementById('ano_lancamento').value;
+    const sinopse = document.getElementById('sinopse').value;
+    const id_diretor = document.getElementById('id_diretor').value;
 
-    // Instancia o objeto seguindo a ordem correta do construtor
-    const novaObra = new ObraDeArte(tituloF, textoF, imagemF, descricaoImF);
+    // Instancia o objeto Filme
+    const novoFilme = new Filme(titulo, ano_lancamento, sinopse, id_diretor);
 
     try {
         // Dispara a requisição POST para a API
@@ -28,18 +28,16 @@ formulario.addEventListener('submit', async function(evento) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(novaObra)
+            body: JSON.stringify(novoFilme)
         });
 
         if (!resposta.ok) {
             throw new Error(`Erro no servidor: ${resposta.status}`);
         }
 
-        const dados = await resposta.json();
-        
-        alert('Obra enviada com sucesso!');
+        alert('Filme cadastrado com sucesso!');
         formulario.reset();
-        window.location.href = 'index.html'; // Redireciona para ver o card na galeria
+        window.location.href = 'index.html'; // Redireciona para a home
 
     } catch (erro) {
         console.error("Erro ao enviar:", erro);
