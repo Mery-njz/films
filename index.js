@@ -71,3 +71,13 @@ app.post('/api/lista', (req, res) => {
 app.listen(3000, () => {
     console.log("🚀 Servidor escutando em http://localhost:3000");
 });
+
+                          // Banco de dados temporário em memória RAM (simulando a tabela filme)
+let lista = [
+    {
+        titulo: "Inception",
+        ano_lancamento: 2010,
+        sinopse: "Um ladrão que rouba segredos corporativos...",
+        id_diretor: 1
+    }
+];
